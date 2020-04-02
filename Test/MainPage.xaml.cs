@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Test.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Test
@@ -17,37 +18,23 @@ namespace Test
         public MainPage()
         {
             InitializeComponent();
+            
         }
 
-        public void Connection_Clicked(object sender, EventArgs e)
+        public async void Connection_Clicked(object sender, EventArgs e)
         {
             this.erreur.IsVisible = false;
 
-            string message = "";
-            //Console.WriteLine("connexion OK");
-            if (this.identifiant.Text == null || this.identifiant.Text.Length < 3)
+            if (string.IsNullOrEmpty(DependencyService.Get<ITwitterService>().authenticate(this.identifiant.Text, this.mdp.Text)))
             {
-                //DisplayAlert("Erreur", "L'identifiant doit contenir au moins 3 caractères", "OK");
-                message = "L'identifiant doit contenir au moins 3 caractères";
-                AfficherErreur(message);
-                return;
+                await Navigation.PushAsync(new ListTweet()); 
             }
-            if (this.mdp.Text == null || this.mdp.Text.Length < 6)
+            else
             {
-                //DisplayAlert("Erreur", "Le mot de passe doit contenir au moins 6 caractères", "OK");
-                message = "Le mot de passe doit contenir au moins 6 caractères";
-                AfficherErreur(message);
-                return;
+                AfficherErreur(DependencyService.Get<ITwitterService>().authenticate(this.identifiant.Text, this.mdp.Text));
             }
 
-            if (DependencyService.Get<ITwitterService>().authenticate(this.identifiant.Text, this.mdp.Text))
-            {
-                this.tweet.IsVisible = true;
-            }
-            message = "L'identifiant ou le mot de passe est incorrect";
-            AfficherErreur(message);
-            //return;
-
+            
         }
 
         private void AfficherErreur(string message)

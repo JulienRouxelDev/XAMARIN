@@ -7,7 +7,7 @@ namespace Test.Services
 {
     public interface ITwitterService
     {
-        bool authenticate(string utilisateur, string password);
+        string authenticate(string utilisateur, string password);
 
         List<Tweet> getTweets(string tweet);
     }

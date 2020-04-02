@@ -4,81 +4,33 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Test.MainPage">
-
+             x:Class="Test.MainPage"
+             xmlns:view="clr-namespace:Test.Views">
     
-        <StackLayout Orientation="Vertical">
-            
-            <ContentView BackgroundColor="#58B0F0">
-                <StackLayout Orientation="Horizontal" Margin="10, 25">
-                    <!--<Label Text="Nouveau" VerticalTextAlignment="Center"></Label>-->
-                    <ImageButton Source="pencil.png"
-                                 HeightRequest="25"
-                                 WidthRequest="25"></ImageButton>
-                    <Label Text="Accueil" 
-                           HorizontalTextAlignment="Center" 
-                           HorizontalOptions="CenterAndExpand"
-                           FontAttributes="Bold"
-                           FontSize="20"></Label>
-                    <!--<Label Text="Rechercher" VerticalTextAlignment="Center"></Label>-->
-                    <ImageButton Source="search.png" 
-                           HeightRequest="25"
-                           WidthRequest="25"></ImageButton>
-                </StackLayout>
-            </ContentView>        
-            
-            <Label Text="Connexion à Twitter" HorizontalOptions="CenterAndExpand" BackgroundColor="red"></Label>
+    <StackLayout Orientation="Vertical">
 
-            
-            <Entry x:Name="identifiant" Placeholder="Identifiant Twitter"></Entry>
-            <Entry x:Name="mdp"  Placeholder="Mot de passe" IsPassword="True"></Entry>
-            <StackLayout Orientation="Horizontal">
-                <Switch></Switch>
-                <Label x:Name="remember"  Text="Mémoriser mes informations"> </Label>
-            </StackLayout>
-            <Label x:Name="erreur" TextColor="red"></Label>
-            <Button x:Name="seConnecter" 
-                    Text="Se connecter" 
-                    HorizontalOptions="FillAndExpand"
-                    Clicked="Connection_Clicked"></Button>
-            
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout x:Name="tweet" Orientation="Vertical" IsVisible="False">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10">
-                            <!--<ContentView Margin="10" WidthRequest="75" HeightRequest="75" BackgroundColor="Black"></ContentView>-->
-                            <Image Source="https://picsum.photos/50/50/?random" 
-                                   HeightRequest="50"
-                                   WidthRequest="50"></Image>
-                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Cedric" TextColor="Black"></Label>
-                                    <Label Text="@cedricmillauriaux" TextColor="Black"></Label>
-                                    <Label Text="50s" TextColor="Black" HorizontalOptions="EndAndExpand"></Label>
-                                </StackLayout>
-                                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod convallis dolor. Quisque ultricies porttitor nunc venenatis facilisis. " TextColor="Black"></Label>
-                            </StackLayout>
-                    </StackLayout>
+        <view:HeaderViews BackgroundColor="#58B0F0" HorizontalOptions="FillAndExpand"></view:HeaderViews>
+
+        <ContentView x:Name="connexion">
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                    <Label Text="Connexion à Twitter" HorizontalOptions="CenterAndExpand" BackgroundColor="red"></Label>
+                    <Entry x:Name="identifiant" Placeholder="Identifiant Twitter"></Entry>
+                    <Entry x:Name="mdp"  Placeholder="Mot de passe" IsPassword="True"></Entry>
                     <StackLayout Orientation="Horizontal">
-                        <!--<Label HorizontalOptions="FillAndExpand" Text="Répondre" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                        <Label HorizontalOptions="FillAndExpand" Text="Retweet" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                        <Label HorizontalOptions="FillAndExpand" Text="Favoris" HorizontalTextAlignment="Center" TextColor="Black"></Label>-->
-                        <ImageButton Source="reply.png" HorizontalOptions="FillAndExpand"> </ImageButton>
-                        <ImageButton Source="retweet.png" HorizontalOptions="FillAndExpand"></ImageButton>
-                        <ImageButton Source="favorite.png" HorizontalOptions="FillAndExpand"></ImageButton>
+                        <Switch></Switch>
+                        <Label x:Name="remember"  Text="Mémoriser mes informations"></Label>
                     </StackLayout>
-                              
-                    <ContentView HeightRequest="0.5" BackgroundColor="WhiteSmoke" HorizontalOptions="FillAndExpand"></ContentView>
-                    </StackLayout>
-                </StackLayout>
-            </ScrollView>
 
-        <StackLayout Orientation="Horizontal" HeightRequest="75">
-                <Label VerticalOptions="Center" HorizontalOptions="FillAndExpand" Text="Fil" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                <Label VerticalOptions="Center" HorizontalOptions="FillAndExpand" Text="Notifications" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                <Label VerticalOptions="Center" HorizontalOptions="FillAndExpand" Text="Messages" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-                <Label VerticalOptions="Center" HorizontalOptions="FillAndExpand" Text="Moi" HorizontalTextAlignment="Center" TextColor="Black"></Label>
-        </StackLayout>
+                    <Label x:Name="erreur" TextColor="red"></Label>
+                    <Button x:Name="seConnecter" 
+                        Text="Se connecter" 
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="Connection_Clicked"></Button>
+                </StackLayout>
+        </ContentView>
+
+
+        <view:FooterView></view:FooterView>
 
     </StackLayout>
         

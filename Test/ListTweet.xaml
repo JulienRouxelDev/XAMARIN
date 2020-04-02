@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Test.ListTweet"
+             xmlns:view="clr-namespace:Test.Views">
+    <ContentPage.Content>
+        <StackLayout>
+            <view:HeaderViews BackgroundColor="#58B0F0" HorizontalOptions="FillAndExpand"></view:HeaderViews>
+            <ListView x:Name="listTweet">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
+                                <!--<ContentView x:Name="tweet" IsVisible="False">-->
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10">
+                                            <Image x:Name="photo"  Source="https://picsum.photos/50/50/?random" 
+                                                    HeightRequest="50"
+                                                    WidthRequest="50"></Image>
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding UserPseudo}" TextColor="Black"></Label>
+                                                    <Label Text= "{Binding UserName}" TextColor="Black" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                                                    <Label Text="{Binding DateCreation}" TextColor="Black" HorizontalOptions="EndAndExpand"></Label>
+                                                </StackLayout>
+                                                <Label Text="{Binding Texte}" TextColor="Black"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <ImageButton Source="reply.png" HorizontalOptions="FillAndExpand"></ImageButton>
+                                            <ImageButton Source="retweet.png" HorizontalOptions="FillAndExpand"></ImageButton>
+                                            <ImageButton Source="favorite.png" HorizontalOptions="FillAndExpand"></ImageButton>
+                                        </StackLayout>
+
+                                        <ContentView HeightRequest="0.5" BackgroundColor="WhiteSmoke" HorizontalOptions="FillAndExpand"></ContentView>
+                                    </StackLayout>
+                                <!--</ContentView>-->
+                            <!--</ScrollView>-->
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <view:FooterView></view:FooterView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
